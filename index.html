@@ -4,12 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Network of Copernicus Academy and Copernicus Relays in Italy</title>
- 
+    <!-- leaflet css -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
-
-    <link rel="stylesheet" href='https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css'/>
+    <!-- markercluster -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css"/>
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css"/>
-    
+    <!-- leaflet js -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+    <!-- markerCluster -->
+    <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
     
     <style>
       body{
@@ -64,8 +68,9 @@
           <input type="checkbox" id="relaysCheckbox" checked>
         </div>
       </div>
-  
-</html>
+  </body>
+	
+
 //leaflet js 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
@@ -178,27 +183,6 @@
   {"Institute": "TeRN – Tecnologie per le Osservazioni della Terra ed i Rischi Naturali", "Coordinates": "40.6037,15.7275"}
 ];
 
- //PROVA
- var prove = [
-    {"Institute": "PROVA", "Contact":"Caterina Motta","Email": "catemotta.198@gmail.com", "Link":"https://twitter.com/cyberframboise" ,"Coordinates": "43.813447474575845, 7.764712426329277"}
-  ];
- 
-// Loop through the ACADEMIES and add markers to the cluster group
-
-for (let i = 0; i < academies.length; i++) {
-  const academy = academies[i];
-  const coordinates = academy.Coordinates.split(',').map(coord => parseFloat(coord.trim()));
-
-  if (!isNaN(coordinates[0]) && !isNaN(coordinates[1])) {
-    const marker = L.marker(coordinates, { icon: myIcon_Orange });
-    marker.bindPopup(academy.Institute);
-    markers.addLayer(marker);
-    console.log(academy.Institute + ": " + coordinates[0] + ", " + coordinates[1]);
-  } else {
-    console.log("Invalid coordinates for " + academy.Institute);
-  }
-}
-
 // Loop through the RELAYS and add markers to the cluster group
 
 for (let i = 0; i < relays.length; i++) {
@@ -214,28 +198,6 @@ for (let i = 0; i < relays.length; i++) {
     console.log("Invalid coordinates for " + relay.Institute);
   }
 }
-
-// PROVA --> POP-UP interattivi in un loop 
-
-// for (let i = 0; i < prove.length; i++) {
-//  const prova = prove[i];
-  //const coordinates = prova.Coordinates.split(',').map(coord => parseFloat(coord.trim()));
-//
-  //if (!isNaN(coordinates[0]) && !isNaN(coordinates[1])) {
-    //const popupContent = `
-      //<strong>${prova.Institute}</strong><br>
-      //Contact: ${prova.Contact}<br>
-      //Email: ${prova.Email}<br>
-      //<a href="${prova.Link}" target="_blank">Click here for more info</a>
-    //`;
-    //const marker = L.marker(coordinates, { icon: myIcon_Red });
-    //marker.bindPopup(popupContent);
-    //markers.addLayer(marker);
-    //console.log(prova.Institute + ": " + coordinates[0] + ", " + coordinates[1]);
-  //} else {
-    //console.log("Invalid coordinates for " + prova.Institute);
-  //}
-//} 
 
 
 // Add the marker cluster group to the map
@@ -312,3 +274,4 @@ function updateMarkers() {
 
 
 </script>
+</html>
